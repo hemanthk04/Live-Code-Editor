@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Code Editor</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="icon" href="stock/code.png" type="img/png">
+    <script
+      src="https://kit.fontawesome.com/f1cd1ade15.js"
+      crossorigin="anonymous"
+
+       textarea.horizontal-restricted {
+            resize: vertical;
+        }
+
+    ></script>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Live Code Editor <i class="fa-solid fa-code"></i></a>
+      <nav class="navbar">
+        <a href="#">By Hemanth Kapalavai</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="left">
+        <label id="htmllabel"><i class="fa-brands fa-html5"></i>HTML</label>
+        <textarea
+          id="HTMLcode"
+          placeholder="Make the Skeleton of your component"
+          onkeyup="run()"
+          spellcheck="false"
+          resize: vertical
+        ></textarea>
+
+        <label id="csslabel"><i class="fa-brands fa-css3-alt"></i>CSS</label>
+        <textarea
+          id="CSScode"
+          placeholder="Add Styling to it"
+          onkeyup="run()"
+          spellcheck="false"
+          resize: vertical
+        ></textarea>
+
+        <label id="jslabel"><i class="fa-brands fa-js"></i>Java Script</label>
+        <textarea
+          id="JScode"
+          placeholder="Add Functionalities"
+          onkeyup="run()"
+          spellcheck="false"
+          resize: vertical
+        ></textarea>
+      </div>
+
+      <div class="right">
+        <label><i class="fa-solid fa-play"></i>Output</label>
+        <iframe id="output"> </iframe>
+      </div>
+    </div>
+    <script>
+      function run() {
+        let HTMLcode = document.getElementById("HTMLcode").value;
+        let CSScode = document.getElementById("CSScode").value;
+        let JScode = document.getElementById("JScode").value;
+        let Output = document.getElementById("output");
+
+        Output.contentDocument.body.innerHTML = HTMLcode + "<style>"+CSScode+"</style>" ;
+        Output.contentWindow.eval(JScode);
+      }
+    </script>
+  </body>
+</html>
